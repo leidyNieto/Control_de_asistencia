@@ -68,7 +68,7 @@ Esto levanta tres servicios:
 | Servicio | URL                       | Descripción                          |
 |----------|---------------------------|--------------------------------------|
 | api      | http://localhost:3000     | API REST                             |
-| db       | localhost:3306            | MySQL 8 (usuario `root` / `rootpass`)|
+| db       | localhost:3307            | MySQL 8 (usuario `root` / `rootpass`)|
 | adminer  | http://localhost:8080     | Administrador web de la BD           |
 
 El script `init.sql` crea las tablas y carga estudiantes de prueba automáticamente
