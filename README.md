@@ -116,19 +116,6 @@ flutter run               # selecciona emulador Android, simulador iOS o disposi
 > `flutter create .` regenera el andamiaje nativo (Android/iOS) sin sobreescribir
 > el código en `lib/` ni `pubspec.yaml`, que ya vienen completos en este repositorio.
 
-### Configurar la URL del backend
-
-Edita [`mobile/lib/config/api_config.dart`](mobile/lib/config/api_config.dart)
-según dónde corra tu backend:
-
-| Escenario                               | `baseUrl`                          |
-|-----------------------------------------|------------------------------------|
-| Emulador Android + backend local        | `http://10.0.2.2:3000`             |
-| Simulador iOS + backend local           | `http://localhost:3000`            |
-| Dispositivo físico (misma red WiFi)     | `http://<IP-de-tu-PC>:3000`        |
-| Túnel ngrok / LocalTunnel               | `https://xxxx.ngrok-free.app`      |
-| Despliegue en la nube                   | `https://tu-dominio.com`           |
-
 ### Permitir HTTP en desarrollo (importante)
 
 Si usas `http://` (no HTTPS), habilita el tráfico en texto plano:
