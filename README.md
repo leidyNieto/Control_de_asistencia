@@ -223,20 +223,6 @@ Ejemplos de uso en [`API.http`](API.http).
 
 ---
 
-## 8. Lista de verificación de la guía
-
-- [x] Registro e inicio de sesión funcionales (bcrypt + JWT).
-- [x] CRUD completo en backend (cursos y sesiones).
-- [x] Base de datos relacional SQL con 5 tablas de dominio y claves foráneas.
-- [x] Conexión App ↔ backend por red local / túnel / nube (configurable).
-- [x] Opción de despliegue documentada (Docker Compose).
-- [x] App móvil multiplataforma (Flutter → Android e iOS).
-- [x] Más de 5 pantallas del dominio principal.
-- [x] Documentación con README y endpoints.
-- [ ] Video demostrativo de máximo 3 minutos (a grabar por el estudiante).
-
----
-
 ## 9. Estructura del proyecto
 
 ```
