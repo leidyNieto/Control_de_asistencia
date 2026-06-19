@@ -1,0 +1,72 @@
+### Variables
+@base = http://localhost:3000/api
+@token = PEGA_AQUI_EL_TOKEN_DEVUELTO_POR_LOGIN
+
+### 1. Registro
+POST {{base}}/register
+Content-Type: application/json
+
+{
+  "nombre": "Docente Demo",
+  "email": "docente@uni.edu",
+  "password": "123456"
+}
+
+### 2. Login
+POST {{base}}/login
+Content-Type: application/json
+
+{
+  "email": "docente@uni.edu",
+  "password": "123456"
+}
+
+### 3. Crear curso
+POST {{base}}/cursos
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "nombre": "Programación Móvil",
+  "codigo": "PM-2026",
+  "descripcion": "Curso de dispositivos móviles"
+}
+
+### 4. Listar cursos
+GET {{base}}/cursos
+Authorization: Bearer {{token}}
+
+### 5. Inscribir estudiante (id 1) en curso (id 1)
+POST {{base}}/cursos/1/inscripciones
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{ "estudiante_id": 1 }
+
+### 6. Crear sesión
+POST {{base}}/sesiones
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "curso_id": 1,
+  "fecha": "2026-06-16",
+  "hora_inicio": "08:00",
+  "hora_fin": "10:00",
+  "tema": "Introducción a Flutter"
+}
+
+### 7. Ver asistencias de la sesión 1
+GET {{base}}/sesiones/1/asistencias
+Authorization: Bearer {{token}}
+
+### 8. Marcar asistencia (registro id 1) como presente
+PUT {{base}}/asistencias/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{ "estado": "presente" }
+
+### 9. Estadísticas del curso 1
+GET {{base}}/estadisticas/curso/1
+Authorization: Bearer {{token}}

@@ -1,0 +1,50 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: ca_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: control_asistencia
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      # El script init.sql se ejecuta automáticamente al crear el contenedor por primera vez
+      - ./backend/db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-prootpass"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build: ./backend
+    container_name: ca_api
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PORT: 3000
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: rootpass
+      DB_NAME: control_asistencia
+      JWT_SECRET: cambia_este_secreto_por_uno_largo_y_aleatorio
+      JWT_EXPIRES_IN: 7d
+    ports:
+      - "3000:3000"
+
+  adminer:
+    image: adminer:latest
+    container_name: ca_adminer
+    restart: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+
+volumes:
+  db_data:
